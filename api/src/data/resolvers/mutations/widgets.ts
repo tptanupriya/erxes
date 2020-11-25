@@ -5,7 +5,6 @@ import {
   Conformities,
   Conversations,
   Customers,
-  EngageMessages,
   Forms,
   FormSubmissions,
   Integrations,
@@ -42,6 +41,7 @@ import {
   sendRequest,
   sendToWebhook
 } from '../../utils';
+import { getOrCreateEngageMessage } from '../../widgetUtils';
 import { conversationNotifReceivers } from './conversations';
 
 interface ISubmission {
@@ -689,43 +689,9 @@ const widgetMutations = {
       debugBase(`Error occurred during widgets save browser info ${e.message}`);
     }
 
-    // update messenger session data
-    const customer = await Customers.updateSession(customerId);
+    await Customers.updateSession(customerId);
 
-    // Preventing from displaying non messenger integrations like form's messages
-    // as last unread message
-    const integration = await Integrations.findOne({
-      _id: customer.integrationId,
-      kind: 'messenger'
-    });
-
-    if (!integration) {
-      throw new Error('Integration not found');
-    }
-
-    const brand = await Brands.findOne({ _id: integration.brandId });
-
-    if (!brand) {
-      throw new Error('Brand not found');
-    }
-
-    // try to create engage chat auto messages
-    if (!customer.primaryEmail) {
-      await EngageMessages.createVisitorMessages({
-        brand,
-        integration,
-        customer,
-        browserInfo
-      });
-    }
-
-    // find conversations
-    const convs = await Conversations.find({
-      integrationId: integration._id,
-      customerId: customer._id
-    });
-
-    return Messages.findOne(Conversations.widgetsUnreadMessagesQuery(convs));
+    return await getOrCreateEngageMessage(customerId, browserInfo);
   },
 
   widgetsSendTypingInfo(
@@ -760,7 +726,7 @@ const widgetMutations = {
       payload,
       type
     }: {
-      conversationId: string;
+      conversationId?: string;
       customerId: string;
       integrationId: string;
       message: string;
@@ -773,6 +739,33 @@ const widgetMutations = {
     }).lean();
 
     const { botEndpointUrl } = integration.messengerData;
+
+    let sessionId = conversationId;
+
+    if (!conversationId) {
+      sessionId = await memoryStorage().get(
+        `bot_initial_message_session_id_${integrationId}`
+      );
+
+      const conversation = await Conversations.createConversation({
+        customerId,
+        integrationId,
+        operatorStatus: CONVERSATION_OPERATOR_STATUS.BOT,
+        status: CONVERSATION_STATUSES.CLOSED
+      });
+
+      conversationId = conversation._id;
+
+      const initialMessageBotData = await memoryStorage().get(
+        `bot_initial_message_${integrationId}`
+      );
+
+      await Messages.createMessage({
+        conversationId: conversation._id,
+        customerId,
+        botData: JSON.parse(initialMessageBotData || '{}')
+      });
+    }
 
     // create customer message
     const msg = await Messages.createMessage({
@@ -794,7 +787,7 @@ const widgetMutations = {
     if (type !== BOT_MESSAGE_TYPES.SAY_SOMETHING) {
       const botRequest = await sendRequest({
         method: 'POST',
-        url: `${botEndpointUrl}/${conversationId}`,
+        url: `${botEndpointUrl}/${sessionId}`,
         body: {
           type: 'text',
           text: payload
@@ -840,14 +833,16 @@ const widgetMutations = {
 
   async widgetGetBotInitialMessage(
     _root,
-    { integrationId, customerId }: { integrationId: string; customerId: string }
+    { integrationId }: { integrationId: string }
   ) {
-    const conversation = await Conversations.createConversation({
-      customerId,
-      integrationId,
-      operatorStatus: CONVERSATION_OPERATOR_STATUS.BOT,
-      status: CONVERSATION_STATUSES.CLOSED
-    });
+    const sessionId = `_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
+
+    await memoryStorage().set(
+      `bot_initial_message_session_id_${integrationId}`,
+      sessionId
+    );
 
     const integration = await Integrations.findOne({
       _id: integrationId
@@ -857,29 +852,19 @@ const widgetMutations = {
 
     const botRequest = await sendRequest({
       method: 'POST',
-      url: `${botEndpointUrl}/${conversation._id}`,
+      url: `${botEndpointUrl}/${sessionId}`,
       body: {
         type: 'text',
         text: 'getStarted'
       }
     });
 
-    const { responses } = botRequest;
+    await memoryStorage().set(
+      `bot_initial_message_${integrationId}`,
+      JSON.stringify(botRequest.responses)
+    );
 
-    const botMessage = await Messages.createMessage({
-      conversationId: conversation._id,
-      customerId,
-      botData: responses
-    });
-
-    graphqlPubsub.publish('conversationClientMessageInserted', {
-      conversationClientMessageInserted: botMessage
-    });
-    graphqlPubsub.publish('conversationMessageInserted', {
-      conversationMessageInserted: botMessage
-    });
-
-    return conversation._id;
+    return { botData: botRequest.responses };
   }
 };
 
