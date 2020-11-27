@@ -28,19 +28,21 @@ module.exports = {
       items: [
         {
           to: 'overview/getting-started/',
-          // activeBasePath: '',
           label: 'Documentation',
           position: 'left',
         },
         {
           to: '/user/subscription-getting-started',
-          // activeBasePath: '',
           label: 'Tutorial',
           position: 'left',
         },
         {
+          to: '/invest',
+          label: 'Invest',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/erxes/erxes',
-          prependBaseUrlToHref: 'true',
           position: 'right',
           label: 'Star',
           className: 'github-button hide-mobile',
