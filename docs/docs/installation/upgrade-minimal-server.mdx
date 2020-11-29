@@ -15,9 +15,9 @@ Below are the instructions to upgrade from the **Minimum Server** to the **Recom
 
 The first step is to login to your hosting provider and resize your server. The server should be resized to the Recommended configuration of **4 CPUs or more** and **8GB RAM or more**. The server will shut-down and then restart.
 
-### Edit the config.json file
+### Edit the configs.json file
 
-There changes to be made to the `config.json` file to enable the full version of **erxes** on a **Recommended** server set-up.
+There changes to be made to the `configs.json` file to enable the full version of **erxes** on a **Recommended** server set-up.
 
 1. Log in to your server as `erxes` user. Open the terminal or command prompt on your computer. You will need your **IP address**. (In this example, 44.123.32.12). You will be asked for the password your created at the end of [Quick Start](ubuntu-quickstart) instructions.
 
@@ -28,9 +28,9 @@ ssh erxes@your-ip-address
 # Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-118-generic x86_64)
 ```
 
-2. You will now change three settings in the `config.json` file. The settings that need changing are `ELASTICSEARCH_URL`, `ELK_SYNCER`, and `USE_DASHBOARD`.
+2. You will now change three settings in the `configs.json` file. The settings that need changing are `ELASTICSEARCH_URL`, `ELK_SYNCER`, and `USE_DASHBOARD`.
 
-### Minimum Server configuration of `config.json`
+### Minimum Server configuration of `configs.json`
 
 ```json
   "ELASTICSEARCH_URL": "https://elasticsearch.erxes.io",
@@ -40,7 +40,7 @@ ssh erxes@your-ip-address
 
 You will change the above settings to the following values:
 
-### Recommended Server configuration of `config.json`
+### Recommended Server configuration of `configs.json`
 
 ```json
   "ELASTICSEARCH_URL": "localhost:9200",
@@ -48,19 +48,19 @@ You will change the above settings to the following values:
   "USE_DASHBOARD": true,
 ```
 
-The `config.json` file is located in the `/home/erxes/erxes.io/erxes/` directory. Navigate to this directory.
+The `configs.json` file is located in the `/home/erxes/erxes.io/erxes/` directory. Navigate to this directory.
 
 ```bash
 cd /home/erxes/erxes.io/erxes/
 ```
 
-Next, use the **nano** editor to edit the `config.json` file. There are other variables in this `config.json` file, but you will only change `ELASTICSEARCH_URL`, `ELK_SYNCER`, and `USE_DASHBOARD` to match the values as shown below:
+Next, use the **nano** editor to edit the `configs.json` file. There are other variables in this `configs.json` file, but you will only change `ELASTICSEARCH_URL`, `ELK_SYNCER`, and `USE_DASHBOARD` to match the values as shown below:
 
 ```bash
-nano config.json
+nano configs.json
 ```
 
-Your `config.json` should look something like this after you've changed it.
+Your `configs.json` should look something like this after you've changed it.
 
 ```json
 {
