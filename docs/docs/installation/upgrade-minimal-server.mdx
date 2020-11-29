@@ -1,0 +1,90 @@
+---
+id: upgrade-minimal-server
+title: Upgrade from Minimum Server
+---
+
+## How to upgrade from Minimum Server
+
+We recommend running **erxes** on a server with a minimum of **4 CPUs or more** and **8GB RAM or more**. However, low traffic installations are possible with the **Minimum Server** requirements of **1 CPU** and **1 GB RAM**.
+
+Upgrading from the **Minimum Server** requirements to the **Recommended Server** requirements, will allow you to access additional features in **erxes** and avoid storing any data on the free **erxes** Elasticsearch servers. For example, **Dashboard Reports** are not available on a **Minimum Server** set-up.
+
+Below are the instructions to upgrade from the **Minimum Server** to the **Recommended Server** requirements.
+
+### Resize the server
+
+The first step is to login to your hosting provider and resize your server. The server should be resized to the Recommended configuration of **4 CPUs or more** and **8GB RAM or more**. The server will shut-down and then restart.
+
+### Edit the config.json file
+
+There changes to be made to the `config.json` file to enable the full version of **erxes** on a **Recommended** server set-up.
+
+1. Log in to your server as `erxes` user. Open the terminal or command prompt on your computer. You will need your **IP address**. (In this example, 44.123.32.12). You will be asked for the password your created at the end of [Quick Start](ubuntu-quickstart) instructions.
+
+```bash
+# example ssh erxes@44.123.32.12
+ssh erxes@your-ip-address
+# erxes@172.105.245.12's password:
+# Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-118-generic x86_64)
+```
+
+2. You will now change three settings in the `config.json` file. The settings that need changing are `ELASTICSEARCH_URL`, `ELK_SYNCER`, and `USE_DASHBOARD`.
+
+### Minimum Server configuration of `config.json`
+
+```json
+  "ELASTICSEARCH_URL": "https://elasticsearch.erxes.io",
+  "ELK_SYNCER": false,
+  "USE_DASHBOARD": false,
+```
+
+You will change the above settings to the following values:
+
+### Recommended Server configuration of `config.json`
+
+```json
+  "ELASTICSEARCH_URL": "localhost:9200",
+  "ELK_SYNCER": true,
+  "USE_DASHBOARD": true,
+```
+
+The `config.json` file is located in the `/home/erxes/erxes.io/erxes/` directory. Navigate to this directory.
+
+```bash
+cd /home/erxes/erxes.io/erxes/
+```
+
+Next, use the **nano** editor to edit the `config.json` file. There are other variables in this `config.json` file, but you will only change `ELASTICSEARCH_URL`, `ELK_SYNCER`, and `USE_DASHBOARD` to match the values as shown below:
+
+```bash
+nano config.json
+```
+
+Your `config.json` should look something like this after you've changed it.
+
+```json
+{
+  "JWT_TOKEN_SECRET": "0.88xxxxxxxxx115",
+  "MONGO_URL": "mongodb://erxes:b8780b1@localhost/erxes?authSource=admin&replicaSet=rs0",
+
+  "ELASTICSEARCH_URL": "localhost:9200",
+  "ELK_SYNCER": true,
+  "USE_DASHBOARD": true
+
+  "DOMAIN": "https://example.com"
+}
+```
+
+Save the file with `ctrl + x` and then `y to accept all changes.
+
+Now simply run the `yarn restart` command in the `/erxes.io/erxes.io` directory.
+
+```bash
+yarn restart
+```
+
+If you received no errors, then you have successfully upgrade to the **Recommended** installation requirements.
+
+### Congratulations
+
+Your **erxes** installation will now run better and with all the features.

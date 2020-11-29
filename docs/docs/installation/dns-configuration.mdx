@@ -1,0 +1,45 @@
+---
+id: dns-configuration
+title: How to configure your DNS records
+---
+
+## Configure your DNS Records to point at your server
+
+Your server will have an **ip address**. You will need to point your domain (or subdomain) name to your new **erxes** server.
+
+- If you are using a full **domain name**, then you will need to follow the instructions from your **domain name registrar** on how to configure the DNS Name Servers to point to your new server.
+- If you are using a **subdomain**, you will need to follow the instructions of updating the `A Records' of the **hosting company** which is hosting your website.
+
+### Example with a domain called, example.com
+
+:::note Example:
+
+You will need to manage your Domain from, in this case, **Digital Ocean**. You do this by adding the domain to the hosting server Domain Manager of where you're hosting **erxes**.
+
+If your domain name is **example.com**, and you are using, for example, [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars), then at your **Domain Name Registrar** you will adjust your **Name Server Settings** to something like this below.
+
+### Name Server Setttings
+
+| Name Server   | Value                |
+| ------------- | -------------------- |
+| Name server 1 | ns1.digitalocean.com |
+| Name server 2 | ns2.digitalocean.com |
+| Name server 3 | ns3.digitalocean.com |
+
+:::
+
+### Example with a subdomain called, erxes.example.com
+
+You first need to create a subdomain. For example, "erxes.example.com". Then you need to edit the **DNS**.
+
+:::note Example:
+
+If your domain name is **erxes.example.com**, and the **ip address** assigned to your server is **44.123.32.12**, then you will have a two `A records` that look like this:
+
+| Type | Name                  | Value                  |
+| ---- | --------------------- | ---------------------- |
+| A    | erxes.example.com     | points to 44.123.32.12 |
+| A    | www.erxes.example.com | points to 44.123.32.12 |
+
+**Note:** You do not need to create a subdomain specifically called "erxes.example.com", you can use another name of your choice such as "admin.example.com" or "123.example.com".
+:::

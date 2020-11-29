@@ -38,7 +38,9 @@ module.exports = {
             {
               Installation: [
                 'installation/ubuntu-quickstart',
+                'installation/upgrade-minimal-server',
                 'installation/ubuntu-step-by-step',
+                `installation/dns-configuration`,
                 `installation/ubuntu-troubleshooting`,
               ],
             },
