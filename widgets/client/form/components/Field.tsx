@@ -173,9 +173,9 @@ export default class Field extends React.Component<Props, State> {
   renderDatepicker() {
     return (
       <Datetime
-        defaultValue={new Date()}
-        viewDate={new Date()}
         value={this.state.dateValue}
+        viewDate={new Date()}
+        defaultValue={new Date()}
         onChange={this.onDateChange}
         dateFormat="YYYY/MM/DD"
         timeFormat={false}
@@ -186,9 +186,9 @@ export default class Field extends React.Component<Props, State> {
   renderDateTimepicker() {
     return (
       <Datetime
-        defaultValue={new Date()}
-        viewDate={new Date()}
         value={this.state.dateTimeValue}
+        viewDate={new Date()}
+        defaultValue={new Date()}
         onChange={this.onDateTimeChange}
         timeFormat="HH:mm"
         dateFormat="YYYY/MM/DD"
