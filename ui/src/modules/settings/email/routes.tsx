@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 const List = asyncComponent(() =>
   import(/* webpackChunkName: "Settings - List Email" */ './containers/List')
-);
+) as unknown as React.ComponentType;
 
 const routes = () => (
   <React.Fragment>

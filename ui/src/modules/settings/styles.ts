@@ -1,5 +1,5 @@
-import { colors, dimensions, typography } from 'modules/common/styles';
-import { rgba } from 'modules/common/styles/color';
+import { colors, dimensions, typography, color } from 'erxes-common-ui'
+
 import styled from 'styled-components';
 import styledTS from 'styled-components-ts';
 
@@ -41,7 +41,7 @@ const LogoContainer = styled.div`
   width: 56px;
   height: 56px;
   cursor: pointer;
-  box-shadow: 0 0 ${unitSpace} 0 ${rgba(colors.colorBlack, 0.2)};
+  box-shadow: 0 0 ${unitSpace} 0 ${color.rgba(colors.colorBlack, 0.2)};
   background-image: url('/images/erxes.png');
   background-color: ${colors.colorPrimary};
   background-position: center;

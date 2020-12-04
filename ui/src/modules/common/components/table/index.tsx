@@ -1,5 +1,5 @@
+import { Table as CommonTable } from 'erxes-common-ui'
 import React from 'react';
-import StyledTable from './styles';
 
 type Props = {
   children: React.ReactNode;
@@ -13,18 +13,8 @@ type Props = {
 };
 
 class Table extends React.Component<Props> {
-  static defaultProps = {
-    required: false,
-    striped: false,
-    bordered: false,
-    condensed: false,
-    hover: false,
-    responsive: false,
-    alignTop: false
-  };
-
   render() {
-    return <StyledTable {...this.props} />;
+    return <CommonTable {...this.props} />;
   }
 }
 

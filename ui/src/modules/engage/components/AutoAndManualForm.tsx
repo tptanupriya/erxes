@@ -232,10 +232,10 @@ class AutoAndManualForm extends React.Component<Props, State> {
     };
 
     return (
-      <Button.Group>
+      <Button group={true}>
         {cancelButton}
         {saveButton()}
-      </Button.Group>
+      </Button>
     );
   };
 

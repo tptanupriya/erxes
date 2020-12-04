@@ -1,73 +1,31 @@
-import queryString from 'query-string';
-import { router } from '.';
+import { router } from 'erxes-common-ui';
 
 /**
  * @param {Object} query
  */
 const setParams = (history: any, query: any, replace: boolean = false) => {
-  const location = Object.assign({}, history.location);
-
-  // convert to {param1: value1}
-  const parsed = queryString.parse(location.search);
-
-  // add new params or replace old params
-  Object.assign(parsed, query);
-
-  // convert back to param1=value1&param2=value2
-  const stringified = queryString.stringify(parsed);
-
-  // go to new url
-  if (replace) {
-    return history.replace(
-      `${location.pathname}?${stringified}${location.hash}`
-    );
-  }
-
-  return history.push(`${location.pathname}?${stringified}${location.hash}`);
+  return router.setParams(history, query, replace);
 };
 
 /**
  * @param {String} name
  */
 const getParam = (history: any, name: string | string[]) => {
-  const location = Object.assign({}, history.location);
-
-  // convert to {param1: value1}
-  const parsed = queryString.parse(location.search);
-
-  return parsed[name];
+  return router.getParam(history, name);
 };
 
 /**
  * @param {...String} queryNames
  */
 const removeParams = (history: any, ...queryNames: string[]) => {
-  const location = Object.assign({}, history.location);
-
-  // convert to {param1: value1}
-  const parsed = queryString.parse(location.search);
-
-  // remove given parameters
-  queryNames.forEach(q => delete parsed[q]);
-
-  // convert back to param1=value1&param2=value2
-  const stringified = queryString.stringify(parsed);
-
-  // go to new url
-  history.push(`${location.pathname}?${stringified}`);
+  return router.removeParams(history, ...queryNames);
 };
 
 /*
  * @param {Object} query
  */
 const refetchIfUpdated = (history: any, query: any) => {
-  if (history.location.search.includes('updated')) {
-    // refetch query if path has refetch param
-    query.refetch();
-
-    // clear refetch param
-    removeParams(history, 'updated');
-  }
+  router.refetchIfUpdated(history, query)
 };
 
 /**
@@ -77,21 +35,14 @@ const refetchIfUpdated = (history: any, query: any) => {
  * @query {Object} query
  */
 const replaceParam = (history: any, params: any, query: any) => {
-  Object.assign(params, query);
-
-  const stringified = queryString.stringify(params);
-
-  return history.push(`${window.location.pathname}?${stringified}`);
+  return router.replaceParam(history, params, query);
 };
 
 export const generatePaginationParams = (queryParams: {
   page?: string;
   perPage?: string;
 }) => {
-  return {
-    page: queryParams.page ? parseInt(queryParams.page, 10) : 1,
-    perPage: queryParams.perPage ? parseInt(queryParams.perPage, 10) : 20
-  };
+  return router.generatePaginationParams(queryParams);
 };
 
 /**
@@ -115,13 +66,7 @@ const onParamSelect = (
  * @returns {Boolean} hashKey
  */
 const checkHashKeyInURL = ({ location }, hashKey?: string): boolean => {
-  if (!hashKey) {
-    return false;
-  }
-
-  const parsedHash = queryString.parse(location.hash);
-
-  return hashKey in parsedHash;
+  return router.checkHashKeyInURL(location, hashKey);
 };
 
 /**
@@ -130,18 +75,7 @@ const checkHashKeyInURL = ({ location }, hashKey?: string): boolean => {
  * @param {String} hashKey
  */
 const removeHash = (history: any, hashKey?: string) => {
-  const location = Object.assign({}, history.location);
-
-  // convert to {hashKey: value}
-  const parsedHash = queryString.parse(location.hash);
-
-  // remove given hashKey
-  delete parsedHash[hashKey];
-
-  // convert back to hashKey=value
-  const stringified = queryString.stringify(parsedHash);
-
-  history.push(`${location.pathname}?${stringified}`);
+  router.removeHash(history, hashKey);
 };
 
 export default {

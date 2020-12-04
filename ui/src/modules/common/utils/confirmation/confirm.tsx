@@ -1,8 +1,5 @@
-import createConfirmation from './createConfirmation';
+import { confirm as CommonConfirm } from 'erxes-common-ui';
 
-// create confirm function
-const confirm = createConfirmation();
-
-export default function(confirmation?: string, options?: {}) {
-  return confirm({ confirmation, options: options || {} });
+export default function (confirmation?: string, options?: {}) {
+  return CommonConfirm(confirmation, options || {});
 }

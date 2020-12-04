@@ -68,7 +68,7 @@ class ConversationItem extends React.Component<Props> {
     );
   }
 
-  onClickCheckBox = (e: React.MouseEvent) => {
+  onClickCheckBox = (e) => {
     e.stopPropagation();
   };
 

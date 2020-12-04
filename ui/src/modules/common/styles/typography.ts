@@ -1,30 +1,32 @@
-const fontWeightLight = 300;
-const fontWeightRegular = 400;
-const fontWeightMedium = 500;
+import { typography } from "erxes-common-ui";
 
-const fontSizeHeading1 = 64;
-const fontSizeHeading2 = 48;
-const fontSizeHeading3 = 40;
-const fontSizeHeading4 = 32;
-const fontSizeHeading5 = 24;
-const fontSizeHeading6 = 20;
-const fontSizeHeading7 = 16;
-const fontSizeHeading8 = 12;
+const fontWeightLight = typography.fontWeightLight;
+const fontWeightRegular = typography.fontWeightRegular;
+const fontWeightMedium = typography.fontWeightMedium;
 
-const fontSizeBody = 13;
-const fontSizeUppercase = 11;
+const fontSizeHeading1 = typography.fontSizeHeading1;
+const fontSizeHeading2 = typography.fontSizeHeading2;
+const fontSizeHeading3 = typography.fontSizeHeading3;
+const fontSizeHeading4 = typography.fontSizeHeading4;
+const fontSizeHeading5 = typography.fontSizeHeading5;
+const fontSizeHeading6 = typography.fontSizeHeading6;
+const fontSizeHeading7 = typography.fontSizeHeading7;
+const fontSizeHeading8 = typography.fontSizeHeading8;
 
-const lineHeightHeading1 = 72 / fontSizeHeading1;
-const lineHeightHeading2 = 56 / fontSizeHeading2;
-const lineHeightHeading3 = 48 / fontSizeHeading3;
-const lineHeightHeading4 = 40 / fontSizeHeading4;
-const lineHeightHeading5 = 32 / fontSizeHeading5;
-const lineHeightHeading6 = 28 / fontSizeHeading6;
-const lineHeightHeading7 = 24 / fontSizeHeading7;
-const lineHeightHeading8 = 16 / fontSizeHeading8;
+const fontSizeBody = typography.fontSizeBody;
+const fontSizeUppercase = typography.fontSizeUppercase;
 
-const lineHeightBody = 20 / fontSizeBody;
-const lineHeightUppercase = 11 / fontSizeUppercase;
+const lineHeightHeading1 = typography.lineHeightHeading1;
+const lineHeightHeading2 = typography.lineHeightHeading2;
+const lineHeightHeading3 = typography.lineHeightHeading3;
+const lineHeightHeading4 = typography.lineHeightHeading4;
+const lineHeightHeading5 = typography.lineHeightHeading5;
+const lineHeightHeading6 = typography.lineHeightHeading6;
+const lineHeightHeading7 = typography.lineHeightHeading7;
+const lineHeightHeading8 = typography.lineHeightHeading8;
+
+const lineHeightBody = typography.lineHeightBody;
+const lineHeightUppercase = typography.lineHeightUppercase;
 
 export default {
   fontWeightLight,

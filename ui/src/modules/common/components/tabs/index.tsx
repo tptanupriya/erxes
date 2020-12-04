@@ -1,12 +1,12 @@
+import { Tabs as MainTabs } from 'erxes-common-ui'
 import React from 'react';
-import { TabCaption, TabContainer } from './styles';
 
 function Tabs(props: {
   children: React.ReactNode;
   grayBorder?: boolean;
   full?: boolean;
 }) {
-  return <TabContainer {...props} />;
+  return < MainTabs.Tabs {...props} />
 }
 
 type TabTitleProps = {
@@ -16,7 +16,7 @@ type TabTitleProps = {
 };
 
 function TabTitle(props: TabTitleProps) {
-  return <TabCaption {...props} />;
+  return <MainTabs.TabTitle {...props}/>;
 }
 
 export { Tabs, TabTitle };

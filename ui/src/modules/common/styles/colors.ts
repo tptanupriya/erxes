@@ -1,65 +1,57 @@
-import { rgba } from './color';
+import { colors } from 'erxes-common-ui';
 
-// Core colors
-const colorPrimary = '#673FBD';
-const colorPrimaryDark = '#5629B6';
-const colorSecondary = '#6569DF';
-const colorCoreRed = '#EA475D';
-const colorCoreTeal = '#63D2D6';
-const colorCoreYellow = '#F7CE53';
-const colorCoreOrange = '#FF6600';
-const colorCoreGreen = '#3CCC38';
-const colorCoreBlue = '#3B85F4';
-const colorCoreDarkBlue = '#0a1e41';
-const colorCoreBlack = '#393C40';
-const colorCoreGray = '#888';
-const colorCoreLightGray = '#AAAEB3';
+  const colorPrimary = colors.colorPrimary;
+  const colorPrimaryDark = colors.colorPrimaryDark;
+  const colorSecondary = colors.colorSecondary;
+  const colorCoreRed = colors.colorCoreRed;
+  const colorCoreTeal = colors.colorCoreTeal;
+  const colorCoreYellow = colors.colorCoreYellow;
+  const colorCoreOrange = colors.colorCoreOrange;
+  const colorCoreBlue = colors.colorCoreBlue;
+  const colorCoreGreen = colors.colorCoreGreen;
+  const colorCoreBlack = colors.colorCoreBlack;
+  const colorCoreGray = colors.colorCoreGray;
+  const colorCoreLightGray = colors.colorCoreLightGray;
+  const colorWhite = colors.colorWhite;
+  const colorBlack = colors.colorBlack;
+  const colorShadowGray = colors.colorShadowGray;
+  const colorLightGray = colors.colorLightGray;
+  const colorLightBlue = colors.colorLightBlue;
+  const colorCoreDarkGray = colors.colorCoreDarkGray;
+  const colorCoreDarkBlue = colors.colorCoreDarkBlue;
 
-const colorLightGray = '#AAA';
-const colorLightBlue = '#F8FBFF';
-const colorCoreDarkGray = '#373737';
-const colorShadowGray = '#DDD';
+  const bgMain = colors.bgMain;
+  const bgDark = colors.bgDark;
+  const bgLight = colors.bgLight;
+  const bgActive = colors.bgActive;
+  const bgUnread = colors.bgUnread;
+  const bgLightPurple = colors.bgLightPurple;
+  const bgInternal = colors.bgInternal;
+  const bgGray = colors.bgGray;
 
-const colorBlack = '#000';
-const colorWhite = '#FFF';
+  const linkPrimary = colors.linkPrimary;
+  const linkPrimaryHover = colors.linkPrimaryHover;
 
-// backgrounds
-const bgMain = '#EDF1F5';
-const bgDark = rgba(colorBlack, 0.95);
-const bgLight = '#FAFAFA';
-const bgActive = '#F0F0F0';
-const bgGray = '#e6e6e6';
-const bgLightPurple = '#F7F8FC';
-const bgUnread = '#ededfb';
-const bgInternal = '#FFFCCC';
+  const borderPrimary = colors.borderPrimary;
+  const borderDarker = colors.borderDarker;
 
-// Link colors
-const linkPrimary = '#1785FC';
-const linkPrimaryHover = rgba(linkPrimary, 0.7);
+  const textPrimary = colors.textPrimary;
+  const textSecondary = colors.textSecondary;
 
-// Border colors
-const borderPrimary = '#EEE';
-const borderDarker = '#DEE4E7';
+  const shadowPrimary = colors.shadowPrimary;
+  const darkShadow = colors.darkShadow;
 
-// Text colors
-const textPrimary = '#444';
-const textSecondary = rgba(textPrimary, 0.8);
+  const socialFacebook = colors.socialFacebook;
+  const socialFacebookMessenger = colors.socialFacebookMessenger;
+  const socialTwitter = colors.socialTwitter;
+  const socialGmail = colors.socialGmail;
+  const socialGoogleMeet = colors.socialGoogleMeet;
+  const socialTelegram = colors.socialTelegram;
+  const socialViber = colors.socialViber;
+  const socialLine = colors.socialLine;
+  const socialTwilio = colors.socialTwilio;
+  const socialWhatsApp = colors.socialWhatsApp;
 
-// Shadow colors
-const shadowPrimary = rgba(colorBlack, 0.08);
-const darkShadow = rgba(colorBlack, 0.2);
-
-// Social colors
-const socialFacebook = '#3A5999';
-const socialFacebookMessenger = '#1472FB';
-const socialTwitter = '#1DA1F2';
-const socialGmail = '#D44638';
-const socialGoogleMeet = '#038476';
-const socialWhatsApp = '#25D366';
-const socialTelegram = '#0088cc';
-const socialViber = '#8f5db7';
-const socialLine = '#00c300';
-const socialTwilio = '#cf272d';
 
 export default {
   colorPrimary,

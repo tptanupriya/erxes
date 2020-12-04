@@ -1,6 +1,5 @@
-import Datetime from '@nateradebaugh/react-datetime';
+import { DateControl as CommonDateControl } from 'erxes-common-ui'
 import React from 'react';
-import { FlexWrapper } from './styles';
 
 type Props = {
   onChange?: (e: React.FormEvent<HTMLElement>) => void;
@@ -16,59 +15,9 @@ type Props = {
 };
 
 class DateControl extends React.Component<Props> {
-  static defaultProps = {
-    dateFormat: 'MMM,DD YYYY'
-  };
-
-  componentDidMount() {
-    const { registerChild } = this.props;
-
-    if (registerChild) {
-      registerChild(this);
-    }
-  }
-
   render() {
-    const {
-      errors,
-      value,
-      name,
-      placeholder,
-      dateFormat,
-      timeFormat,
-      required
-    } = this.props;
-    const errorMessage = errors && errors[name || ''];
-
-    // cancel custom browser default form validation error
-    const onChange = e => {
-      if (this.props.onChange) {
-        this.props.onChange(e);
-      }
-    };
-
-    const inputProps = {
-      name,
-      placeholder: placeholder || '',
-      required: required || false,
-      autoComplete: 'off'
-    };
-
-    const attributes = {
-      inputProps,
-      dateFormat,
-      timeFormat: timeFormat || false,
-      value,
-      closeOnSelect: true,
-      onChange,
-      utc: true
-    };
-
     return (
-      <FlexWrapper>
-        <Datetime {...attributes} />
-        {errorMessage}
-      </FlexWrapper>
+      <CommonDateControl {...this.props}> </CommonDateControl>
     );
   }
 }

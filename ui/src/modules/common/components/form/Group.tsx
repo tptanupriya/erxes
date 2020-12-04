@@ -1,5 +1,5 @@
+import { FormGroup as CommonFormGroup } from 'erxes-common-ui'
 import React from 'react';
-import { Formgroup } from './styles';
 
 function FormGroup({
   children,
@@ -8,7 +8,7 @@ function FormGroup({
   children: React.ReactNode;
   horizontal?: boolean;
 }) {
-  return <Formgroup horizontal={horizontal}>{children}</Formgroup>;
+  return <CommonFormGroup horizontal={horizontal}>{children}</CommonFormGroup>;
 }
 
 export default FormGroup;

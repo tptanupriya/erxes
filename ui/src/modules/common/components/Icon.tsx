@@ -1,11 +1,5 @@
+import { Icon as CommonIcon } from 'erxes-common-ui';
 import React from 'react';
-import styled from 'styled-components';
-import styledTS from 'styled-components-ts';
-
-const IconStyle = styledTS<{ size?: number }>(styled.i)`
-  font-size: ${props => (props.size ? `${props.size}px` : 'inherit')};
-  color: ${props => props.color && props.color};
-`;
 
 type Props = {
   icon: string;
@@ -17,19 +11,17 @@ type Props = {
 };
 
 function Icon(props: Props) {
-  const { isActive, color } = props;
-
-  let changedColor = color || '';
-
-  if (isActive) {
-    changedColor = 'black';
+  const onClick = (e) => {
+    if (!props.onClick) {
+      return;
+    }
+    return props.onClick(e);
   }
 
   return (
-    <IconStyle
+    <CommonIcon
       {...props}
-      className={`icon-${props.icon}`}
-      color={changedColor}
+      onClick={onClick}
     />
   );
 }

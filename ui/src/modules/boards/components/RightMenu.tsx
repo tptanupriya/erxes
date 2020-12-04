@@ -1,4 +1,5 @@
 import Button from 'modules/common/components/Button';
+// import { Button } from 'erxes-common-ui'
 import { FormControl } from 'modules/common/components/form';
 import Icon from 'modules/common/components/Icon';
 import { Tabs, TabTitle } from 'modules/common/components/tabs';
@@ -225,7 +226,7 @@ export default class RightMenu extends React.Component<Props, State> {
 
     const { currentTab, showMenu } = this.state;
     const { isFiltered } = this.props;
-
+    console.log('kkkkkkkkkkkkkkkkkkkkk');
     return (
       <div ref={this.setWrapperRef}>
         {isFiltered && (
@@ -239,10 +240,11 @@ export default class RightMenu extends React.Component<Props, State> {
           </Button>
         )}
         <Button
-          btnStyle="simple"
+          btnStyle="danger"
           uppercase={false}
           icon="bars"
           onClick={this.toggleMenu}
+          size="large"
         >
           {showMenu ? __('Hide Menu') : __('Show Menu')}
         </Button>

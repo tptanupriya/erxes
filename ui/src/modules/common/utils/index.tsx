@@ -1,3 +1,6 @@
+import {
+  core
+} from 'erxes-common-ui'
 import { getEnv } from 'apolloClient';
 import dayjs from 'dayjs';
 import T from 'i18n-react';
@@ -14,60 +17,19 @@ import uploadHandler from './uploadHandler';
 import urlParser from './urlParser';
 
 export const renderFullName = data => {
-  if (data.firstName || data.lastName) {
-    return (data.firstName || '') + ' ' + (data.lastName || '');
-  }
-
-  if (data.primaryEmail || data.primaryPhone) {
-    return data.primaryEmail || data.primaryPhone;
-  }
-
-  if (data.emails && data.emails.length > 0) {
-    return data.emails[0] || 'Unknown';
-  }
-
-  const { visitorContactInfo } = data;
-
-  if (visitorContactInfo) {
-    return visitorContactInfo.phone || visitorContactInfo.email || 'Unknown';
-  }
-
-  return 'Unknown';
+  return core.renderFullName(data);
 };
 
 export const renderUserFullName = data => {
-  const { details } = data;
-
-  if (details && details.fullName) {
-    return details.fullName;
-  }
-
-  if (data.email || data.username) {
-    return data.email || data.username;
-  }
-
-  return 'Unknown';
+  return core.renderUserFullName(data);
 };
 
 export const setTitle = (title: string, force: boolean) => {
-  if (!document.title.includes(title) || force) {
-    document.title = title;
-  }
+  core.setTitle(title, force)
 };
 
 export const setBadge = (count: number, title: string) => {
-  const favicon = document.getElementById('favicon') as HTMLAnchorElement;
-
-  if (count) {
-    if (document.title.includes(title)) {
-      setTitle(`(${count}) ${title}`, true);
-    }
-
-    favicon.href = '/favicon-unread.png';
-  } else {
-    setTitle(title, true);
-    favicon.href = '/favicon.png';
-  }
+  core.setBadge(count, title)
 };
 
 export const reorder = (
@@ -75,67 +37,45 @@ export const reorder = (
   startIndex: number,
   endIndex: number
 ) => {
-  const result = Array.from(list);
-
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
+  return core.reorder(list, startIndex, endIndex)
 };
 
 export const generateRandomColorCode = () => {
-  return `#${Math.random()
-    .toString(16)
-    .slice(2, 8)}`;
+  return core.generateRandomColorCode
 };
 
-const isNumeric = n => {
-  return !isNaN(parseFloat(n)) && isFinite(n);
+export const isNumeric = n => {
+  return core.isNumeric(n);
 };
 
 export const isTimeStamp = timestamp => {
-  const newTimestamp = new Date(timestamp).getTime();
-  return isNumeric(newTimestamp);
+  return core.isTimeStamp(timestamp);
 };
 
 // Create an array with "stop" numbers, starting from "start"
 export const range = (start: number, stop: number) => {
-  return Array.from(Array(stop), (_, i) => start + i);
+  return core.range(start, stop);
 };
 
 // Return the list of values that are the intersection of two arrays
 export const intersection = (array1: any[], array2: any[]) => {
-  return array1.filter(n => array2.includes(n));
+  return core.intersection(array1, array2);
 };
 
 // Computes the union of the passed-in arrays: the list of unique items
 export const union = (array1: any[], array2: any[]) => {
-  return array1.concat(array2.filter(n => !array1.includes(n)));
+  return core.union(array1, array2);
 };
 
 // Similar to without, but returns the values from array that are not present in the other arrays.
 export const difference = (array1: any[], array2: any[]) => {
-  return array1.filter(n => !array2.includes(n));
+  return core.difference(array1, array2);
 };
 
 export { Alert, uploadHandler, router, confirm, toggleCheckBoxes, urlParser };
 
 export const can = (actionName: string, currentUser: IUser): boolean => {
-  if (!currentUser) {
-    return false;
-  }
-
-  if (currentUser.isOwner) {
-    return true;
-  }
-
-  if (!actionName) {
-    return false;
-  }
-
-  const actions = currentUser.permissionActions || [];
-
-  return actions[actionName] === true;
+  return core.can(actionName, currentUser);
 };
 
 export const __ = (key: string, options?: any) => {
@@ -154,13 +94,9 @@ export const __ = (key: string, options?: any) => {
  * @return {String} - URL
  */
 export const readFile = (value: string): string => {
-  if (!value || urlParser.isValidURL(value) || value.includes('/')) {
-    return value;
-  }
-
   const { REACT_APP_API_URL } = getEnv();
 
-  return `${REACT_APP_API_URL}/read-file?key=${value}`;
+  return core.readFile(value, REACT_APP_API_URL);
 };
 
 export const getUserAvatar = (user: IUserDoc) => {
@@ -195,66 +131,26 @@ export function renderWithProps<Props>(
 }
 
 export const isValidDate = date => {
-  const parsedDate = Date.parse(date);
-
-  // Checking if it is date
-  if (isNaN(date) && !isNaN(parsedDate)) {
-    return true;
-  }
-
-  return false;
+  return core.isValidDate(date);
 };
 
 export const extractAttachment = (attachments: IAttachment[]) => {
-  return attachments.map(file => ({
-    name: file.name,
-    type: file.type,
-    url: file.url,
-    size: file.size
-  }));
+  return core.extractAttachment(attachments);
 };
 
 export const setCookie = (cname: string, cvalue: string, exdays = 100) => {
-  const d = new Date();
-
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-
-  const expires = `expires=${d.toUTCString()}`;
-
-  document.cookie = `${cname}=${cvalue};${expires};path=/`;
+  core.setCookie(cname, cvalue, exdays);
 };
 
 export const getCookie = cname => {
-  const name = `${cname}=`;
-  const ca = document.cookie.split(';');
-
-  for (let c of ca) {
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
-
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-
-  return '';
+  return core.getCookie(cname);
 };
 
 /**
  * Generate random string
  */
 export const generateRandomString = (len: number = 10) => {
-  const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-  let randomString = '';
-
-  for (let i = 0; i < len; i++) {
-    const position = Math.floor(Math.random() * charSet.length);
-    randomString += charSet.substring(position, position + 1);
-  }
-
-  return randomString;
+  return core.generateRandomString();
 };
 
 /**
@@ -262,7 +158,7 @@ export const generateRandomString = (len: number = 10) => {
  */
 
 export const getRandomNumber = (max: number = 10) => {
-  return Math.floor(Math.random() * Math.floor(max));
+  return core.getRandomNumber(max);
 };
 
 /**
@@ -272,56 +168,11 @@ export const sendDesktopNotification = (doc: {
   title: string;
   content?: string;
 }) => {
-  const notify = () => {
-    // Don't send notification to itself
-    if (!window.document.hidden) {
-      return;
-    }
-
-    const notification = new Notification(doc.title, {
-      body: doc.content,
-      icon: '/favicon.png',
-      dir: 'ltr'
-    });
-
-    // notify by sound
-    const audio = new Audio('/sound/notify.mp3');
-    audio.play();
-
-    notification.onclick = () => {
-      window.focus();
-      notification.close();
-    };
-  };
-
-  // Browser doesn't support Notification api
-  if (!('Notification' in window)) {
-    return;
-  }
-
-  if (Notification.permission === 'granted') {
-    return notify();
-  }
-
-  if (Notification.permission !== 'denied') {
-    Notification.requestPermission(permission => {
-      if (!('permission' in Notification)) {
-        (Notification as any).permission = permission;
-      }
-
-      if (permission === 'granted') {
-        return notify();
-      }
-    });
-  }
+  core.sendDesktopNotification(doc);
 };
 
 export const roundToTwo = value => {
-  if (!value) {
-    return 0;
-  }
-
-  return Math.round(value * 100) / 100;
+  return core.roundToTwo(value);
 };
 
 function createLinkFromUrl(url) {
@@ -373,18 +224,15 @@ export function formatValue(value) {
 }
 
 export function isEmptyContent(content: string) {
-  // check if a string contains whitespace or empty
-  return !/\S/.test(content);
+  return core.isEmptyContent(content);
 }
 
 export const isValidUsername = (username: string) => {
-  const reg = /^(?=[a-zA-Z0-9._]{4,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/gim;
-
-  return reg.test(username);
+  return core.isValidUsername(username);
 };
 
 export const storeConstantToStore = (key, values) => {
-  localStorage.setItem(`config:${key}`, JSON.stringify(values));
+  core.storeConstantToStore(key, values);
 };
 
 export const getConstantFromStore = (
@@ -392,34 +240,10 @@ export const getConstantFromStore = (
   isMap?: boolean,
   isFlat?: boolean
 ) => {
-  const constant = JSON.parse(localStorage.getItem(`config:${key}`) || '[]');
-
-  if (isFlat) {
-    return constant.map(element => element.value);
-  }
-
-  if (!isMap) {
-    return constant;
-  }
-
-  const map = {};
-
-  constant.forEach(element => {
-    map[element.value] = element.label;
-  });
-
-  return map;
+  return core.getConstantFromStore(key, isMap, isFlat);
 };
 
 // Most basic frontend solution for click-jack defense
 export const bustIframe = () => {
-  if (window.self === window.top) {
-    const antiClickjack = document.getElementById('anti-clickjack');
-
-    if (antiClickjack && antiClickjack.parentNode) {
-      antiClickjack.parentNode.removeChild(antiClickjack);
-    }
-  } else {
-    window.top.location = window.self.location;
-  }
+  core.bustIframe();
 };

@@ -1,7 +1,9 @@
-const unitSpacing = 10;
-const coreSpacing = unitSpacing * 2;
-const headerSpacing = 50;
-const headerSpacingWide = headerSpacing + 20;
+import { dimensions } from 'erxes-common-ui';
+
+const unitSpacing = dimensions.unitSpacing;
+const coreSpacing = dimensions.coreSpacing;
+const headerSpacing = dimensions.headerSpacing;
+const headerSpacingWide = dimensions.headerSpacingWide;
 
 export default {
   unitSpacing,

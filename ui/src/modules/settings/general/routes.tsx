@@ -6,19 +6,19 @@ const GeneralSettings = asyncComponent(() =>
   import(
     /* webpackChunkName: "Settings List - General" */ './containers/GeneralSettings'
   )
-);
+) as unknown as React.ComponentType;
 
 const IntegrationConfigs = asyncComponent(() =>
   import(
     /* webpackChunkName: "Integration configs" */ './containers/IntegrationConfigs'
   )
-);
+) as unknown as React.ComponentType;
 
 const EngageConfigs = asyncComponent(() =>
   import(
     /* webpackChunkName: "Integration configs" */ './components/EngageConfigs'
   )
-);
+) as unknown as React.ComponentType;
 
 const routes = () => {
   return (

@@ -11,6 +11,7 @@ module.exports = override(
   babelInclude([
     path.resolve("src"),
     path.resolve("../plugins"),
+    path.resolve("./node_modules/erxes-common-ui")
   ]),
   addBabelPlugins(
     "@babel/plugin-proposal-class-properties",

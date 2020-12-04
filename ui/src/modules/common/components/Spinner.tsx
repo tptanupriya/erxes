@@ -1,3 +1,4 @@
+import { Spinner as CommonSpinner } from 'erxes-common-ui';
 import { rotate } from 'modules/common/utils/animations';
 import React from 'react';
 import styled from 'styled-components';
@@ -12,11 +13,6 @@ type Props = {
   top?: string;
   bottom?: string;
 };
-
-const Spin = styledTS<Props>(styled.div)`
-  height: ${props => props.objective && '100px'};
-  position: ${props => props.objective && 'relative'};
-`;
 
 export const MainLoader = styledTS<Props>(styled.div)`
   position: absolute;
@@ -35,24 +31,9 @@ export const MainLoader = styledTS<Props>(styled.div)`
   border-radius: 100%;
 `;
 
-function Spinner({
-  objective = false,
-  size = 26,
-  top = '50%',
-  bottom = 'auto',
-  left = '50%',
-  right = 'auto'
-}: Props) {
+function Spinner(props: Props) {
   return (
-    <Spin objective={objective}>
-      <MainLoader
-        size={size}
-        top={top}
-        bottom={bottom}
-        right={right}
-        left={left}
-      />
-    </Spin>
+    <CommonSpinner {...props} />
   );
 }
 

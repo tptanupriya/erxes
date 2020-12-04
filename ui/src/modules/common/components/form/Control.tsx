@@ -1,14 +1,7 @@
 import React from 'react';
-import {
-  Checkbox,
-  FlexWrapper,
-  FormLabel,
-  Input,
-  Radio,
-  Select,
-  SelectWrapper
-} from './styles';
-import Textarea from './Textarea';
+import { FormControl as CommonFormControl } from 'erxes-common-ui'
+// import injectSheet from "react-jss";
+// import styled from "styled-components";
 
 type Props = {
   children?: React.ReactNode;
@@ -43,141 +36,33 @@ type Props = {
   maxLength?: number;
 };
 
-const renderElement = (Element, attributes, type, child) => {
-  return (
-    <FormLabel key={attributes.key ? attributes.key : null}>
-      <Element {...attributes} type={type} />
-      <span>
-        {child && '\u00a0\u00a0'}
-        {child}
-      </span>
-    </FormLabel>
-  );
-};
-
 class FormControl extends React.Component<Props> {
-  static defaultProps = {
-    componentClass: 'input',
-    required: false,
-    defaultChecked: false,
-    disabled: false
-  };
-
-  componentDidMount() {
-    const { registerChild } = this.props;
-
-    if (registerChild) {
-      registerChild(this);
+  onClick = (e) => {
+    if (!this.props.onClick) {
+      return;
     }
+    return this.props.onClick(e);
   }
 
   render() {
     const props = this.props;
-    const childNode = props.children;
-    const elementType = props.componentClass;
-    const errorMessage = props.errors && props.errors[props.name || ''];
-
-    // cancel custom browser default form validation error
-    const onChange = e => {
-      if (props.onChange) {
-        props.onChange(e);
-      }
-    };
-
-    const attributes = {
-      onChange,
-      onKeyPress: props.onKeyPress,
-      onClick: props.onClick,
-      onBlur: props.onBlur,
-      value: props.value,
-      defaultValue: props.defaultValue,
-      [props.defaultChecked
-        ? 'defaultChecked'
-        : 'checked']: props.defaultChecked
-        ? props.defaultChecked
-        : props.checked,
-      placeholder: props.placeholder,
-      hasError: errorMessage ? true : false,
-      type: props.type,
-      name: props.name,
-      round: props.round,
-      required: props.required,
-      disabled: props.disabled,
-      onFocus: props.onFocus,
-      autoFocus: props.autoFocus,
-      autoComplete: props.autoComplete,
-      min: props.min,
-      max: props.max,
-      id: props.id,
-      maxHeight: props.maxHeight,
-      maxLength: props.maxLength
-    };
-
-    if (elementType === 'select') {
-      if (props.options) {
-        return (
-          <FlexWrapper>
-            <SelectWrapper hasError={errorMessage}>
-              <Select {...attributes}>
-                {props.options.map((option, index) => {
-                  return (
-                    <option key={index} value={option.value || ''}>
-                      {option.label || ''}
-                    </option>
-                  );
-                })}
-              </Select>
-            </SelectWrapper>
-            {errorMessage}
-          </FlexWrapper>
-        );
-      }
-
-      return (
-        <FlexWrapper>
-          <SelectWrapper hasError={errorMessage}>
-            <Select {...attributes}>{childNode}</Select>
-          </SelectWrapper>
-          {errorMessage}
-        </FlexWrapper>
-      );
-    }
-
-    if (elementType === 'radio') {
-      if (props.options) {
-        return props.options.map((option, index) => {
-          return renderElement(
-            Radio,
-            { key: index, ...attributes, ...option },
-            elementType,
-            option.childNode
-          );
-        });
-      }
-
-      return renderElement(Radio, attributes, elementType, childNode);
-    }
-
-    if (elementType === 'checkbox') {
-      return renderElement(Checkbox, attributes, elementType, childNode);
-    }
-
-    if (elementType === 'textarea') {
-      return (
-        <FlexWrapper>
-          <Textarea {...props} hasError={errorMessage} />
-          {errorMessage}
-        </FlexWrapper>
-      );
-    }
-
+    // injectSheet()(CommonFormControl);
+    // const cfc = new CommonFormControl({ ...props, onClick: this.onClick });
+    // const ret = cfc.render();
+    // console.log('lllllllllllllllll', cfc.state, this.state);
+    // return ret;
+    // // return Bar;
     return (
-      <FlexWrapper>
-        <Input {...attributes} />
-        {errorMessage}
-      </FlexWrapper>
-    );
+      <CommonFormControl
+        {...props}
+        onClick={this.onClick}
+      >
+        {props.children}
+      </CommonFormControl>
+    )
+
   }
+
 }
 
 export default FormControl;
