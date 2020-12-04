@@ -1,4 +1,4 @@
-import { AnimatedLoader as CommonAnimatedLoader } from 'erxes-common-ui';
+import { AnimatedLoader as CommonAnimatedLoader } from 'erxes-ui-utils';
 import { IAnimatedLoader } from 'modules/common/types';
 import React from 'react';
 

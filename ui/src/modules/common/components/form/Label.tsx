@@ -1,4 +1,4 @@
-import { ControlLabel as CommonControlLabel } from 'erxes-common-ui'
+import { ControlLabel as CommonControlLabel } from 'erxes-ui-utils'
 import { __ } from 'modules/common/utils';
 import React from 'react';
 

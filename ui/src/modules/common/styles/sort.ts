@@ -1,4 +1,4 @@
-import { sort } from 'erxes-common-ui';
+import { sort } from 'erxes-ui-utils';
 
 const SortItem = sort.SortItem;
 

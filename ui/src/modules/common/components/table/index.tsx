@@ -1,4 +1,4 @@
-import { Table as CommonTable } from 'erxes-common-ui'
+import { Table as CommonTable } from 'erxes-ui-utils'
 import React from 'react';
 
 type Props = {

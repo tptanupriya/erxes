@@ -1,4 +1,4 @@
-import { color } from 'erxes-common-ui'
+import { color } from 'erxes-ui-utils'
 
 // Convert a hex value into RGB
 const rgb = color.rgb;

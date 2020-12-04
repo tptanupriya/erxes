@@ -1,4 +1,4 @@
-import { router } from 'erxes-common-ui';
+import { router } from 'erxes-ui-utils';
 
 /**
  * @param {Object} query

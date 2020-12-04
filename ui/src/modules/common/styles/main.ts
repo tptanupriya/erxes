@@ -1,4 +1,4 @@
-import { mainStyles } from 'erxes-common-ui';
+import { mainStyles } from 'erxes-ui-utils';
 
 const FullContent = mainStyles.FullContent;
 

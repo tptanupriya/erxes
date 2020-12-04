@@ -1,4 +1,4 @@
-import { TabStyles } from 'erxes-common-ui';
+import { TabStyles } from 'erxes-ui-utils';
 
 const TabContainer = TabStyles.TabContainer;
 

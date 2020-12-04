@@ -1,6 +1,6 @@
 import {
   core
-} from 'erxes-common-ui'
+} from 'erxes-ui-utils'
 import { getEnv } from 'apolloClient';
 import dayjs from 'dayjs';
 import T from 'i18n-react';

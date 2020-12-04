@@ -1,4 +1,4 @@
-import { Icon as CommonIcon } from 'erxes-common-ui';
+import { Icon as CommonIcon } from 'erxes-ui-utils';
 import React from 'react';
 
 type Props = {

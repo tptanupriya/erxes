@@ -1,4 +1,4 @@
-import { dimensions } from 'erxes-common-ui';
+import { dimensions } from 'erxes-ui-utils';
 
 const unitSpacing = dimensions.unitSpacing;
 const coreSpacing = dimensions.coreSpacing;

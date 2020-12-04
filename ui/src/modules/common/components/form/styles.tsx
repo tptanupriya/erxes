@@ -1,4 +1,4 @@
-import { FormStyle } from 'erxes-common-ui';
+import { FormStyle } from 'erxes-ui-utils';
 
 const Label = FormStyle.Label;
 

@@ -1,4 +1,4 @@
-import { chooser } from 'erxes-common-ui'
+import { chooser } from 'erxes-ui-utils'
 
 const Columns = chooser.Columns;
 

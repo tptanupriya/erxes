@@ -1,4 +1,4 @@
-import { Alert as CommonAlert} from 'erxes-common-ui'
+import { Alert as CommonAlert} from 'erxes-ui-utils'
 
 const Alert = {
   success: CommonAlert.success,

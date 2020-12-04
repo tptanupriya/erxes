@@ -1,4 +1,4 @@
-import { Tags as CommonTags } from 'erxes-common-ui';
+import { Tags as CommonTags } from 'erxes-ui-utils';
 import React from 'react';
 import { ITag } from '../../tags/types';
 

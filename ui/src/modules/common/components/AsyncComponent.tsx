@@ -1,4 +1,4 @@
-import { AsyncComponent } from 'erxes-common-ui'
+import { AsyncComponent } from 'erxes-ui-utils'
 import { IAnimatedLoader } from '../types';
 
 export default function asyncComponent(

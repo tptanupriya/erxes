@@ -1,4 +1,4 @@
-import { Tip as CommonTip } from 'erxes-common-ui'
+import { Tip as CommonTip } from 'erxes-ui-utils'
 import React from 'react';
 
 type Props = {

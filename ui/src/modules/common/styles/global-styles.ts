@@ -1,4 +1,4 @@
-import { globalStyle as globalStyleCommon } from 'erxes-common-ui';
+import { globalStyle as globalStyleCommon } from 'erxes-ui-utils';
 import { injectGlobal } from 'styled-components';
 
 const style = globalStyleCommon;

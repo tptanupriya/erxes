@@ -58,39 +58,38 @@ const renderRoutes = currentUser => {
   };
 
   if (currentUser) {
-    // const pluginModules = require('./plugins').default || {};
-    // const plugins: any = [];
-    // const pluginRoutes: any = [];
+    const pluginModules = require('./plugins').default || {};
+    const plugins: any = [];
+    const pluginRoutes: any = [];
 
-    // for (const pluginName of Object.keys(pluginModules)) {
-    //   const plugin = pluginModules[pluginName]();
+    for (const pluginName of Object.keys(pluginModules)) {
+      const plugin = pluginModules[pluginName]();
 
-    //   plugins.push({
-    //     name: pluginName,
-    //     ...plugin
-    //   });
+      plugins.push({
+        name: pluginName,
+        ...plugin
+      });
 
-    //   if (plugin.routes) {
-    //     for (const route of plugin.routes) {
-    //       const { component } = route;
-    //       const path = `/${pluginName}${route.path}`
+      if (plugin.routes) {
+        for (const route of plugin.routes) {
+          const { component } = route;
+          const path = `/${pluginName}${route.path}`
 
-    //       pluginRoutes.push(
-    //         <Route
-    //           key={path}
-    //           exact={true}
-    //           path={path}
-    //           component={component}
-    //         />
-    //       )
-    //     }
-    //   }
-    // }
+          pluginRoutes.push(
+            <Route
+              key={path}
+              exact={true}
+              path={path}
+              component={component}
+            />
+          )
+        }
+      }
+    }
 
     return (
       <>
-        {/* <MainLayout currentUser={currentUser} plugins={plugins}> */}
-        <MainLayout currentUser={currentUser}>
+        <MainLayout currentUser={currentUser} plugins={plugins}>
           <NotificationRoutes />
           <InboxRoutes />
           <SegmentsRoutes />
@@ -109,7 +108,7 @@ const renderRoutes = currentUser => {
           <VideoCallRoutes />
           <TutorialRoutes />
 
-          {/* {pluginRoutes} */}
+          {pluginRoutes}
 
           <Route
             key="/confirmation"
@@ -125,12 +124,6 @@ const renderRoutes = currentUser => {
   console.log('wwwwwwwwww')
   const kk = (
     <Switch>
-      <Route
-        key="/confirmation"
-        exact={true}
-        path="/confirmation"
-        component={userConfirmation}
-      />
       <AuthRoutes />
     </Switch>
   );

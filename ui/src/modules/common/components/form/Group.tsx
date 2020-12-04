@@ -1,4 +1,4 @@
-import { FormGroup as CommonFormGroup } from 'erxes-common-ui'
+import { FormGroup as CommonFormGroup } from 'erxes-ui-utils'
 import React from 'react';
 
 function FormGroup({

@@ -1,4 +1,4 @@
-import { ActionButtons as ActionButton } from 'erxes-common-ui'
+import { ActionButtons as ActionButton } from 'erxes-ui-utils'
 import React from 'react';
 
 function ActionButtons({ children }: { children: React.ReactNode }) {

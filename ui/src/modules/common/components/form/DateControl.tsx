@@ -1,4 +1,4 @@
-import { DateControl as CommonDateControl } from 'erxes-common-ui'
+import { DateControl as CommonDateControl } from 'erxes-ui-utils'
 import React from 'react';
 
 type Props = {

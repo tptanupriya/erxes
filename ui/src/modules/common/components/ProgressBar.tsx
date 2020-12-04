@@ -1,4 +1,4 @@
-import { ProgressBar as CommonProgressBar } from 'erxes-common-ui';
+import { ProgressBar as CommonProgressBar } from 'erxes-ui-utils';
 import React from 'react';
 
 type Props = {

@@ -1,4 +1,4 @@
-import { uploadHandler as common } from 'erxes-common-ui';
+import { uploadHandler as common } from 'erxes-ui-utils';
 import { getEnv } from 'apolloClient';
 
 type FileInfo = {

@@ -1,4 +1,4 @@
-import { urlParser } from 'erxes-common-ui'
+import { urlParser } from 'erxes-ui-utils'
 
 // check if valid url
 export const isValidURL = (url: string) => {

@@ -1,4 +1,4 @@
-import { animations } from 'erxes-common-ui';
+import { animations } from 'erxes-ui-utils';
 
 const rotate = animations.rotate;
 

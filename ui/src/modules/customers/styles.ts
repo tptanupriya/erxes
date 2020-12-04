@@ -1,4 +1,4 @@
-import { mainStyles } from 'erxes-common-ui'
+import { mainStyles } from 'erxes-ui-utils'
 import { colors, dimensions, typography } from 'modules/common/styles';
 import { SidebarList } from 'modules/layout/styles';
 import styled, { css } from 'styled-components';

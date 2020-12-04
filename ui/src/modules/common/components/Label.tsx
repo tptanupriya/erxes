@@ -1,4 +1,4 @@
-import { Label as CommonLabel } from 'erxes-common-ui';
+import { Label as CommonLabel } from 'erxes-ui-utils';
 import { __ } from 'modules/common/utils';
 import React from 'react';
 

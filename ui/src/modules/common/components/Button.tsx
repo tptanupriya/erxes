@@ -1,4 +1,4 @@
-import { Button as CommonButton, ButtonGroup as CommonButtonGroup } from 'erxes-common-ui'
+import { Button as CommonButton, ButtonGroup as CommonButtonGroup } from 'erxes-ui-utils'
 import { __ } from 'modules/common/utils';
 import React from 'react';
 

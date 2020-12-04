@@ -1,4 +1,4 @@
-import { colors } from 'erxes-common-ui';
+import { colors } from 'erxes-ui-utils';
 
   const colorPrimary = colors.colorPrimary;
   const colorPrimaryDark = colors.colorPrimaryDark;

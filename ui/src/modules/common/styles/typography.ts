@@ -1,4 +1,4 @@
-import { typography } from "erxes-common-ui";
+import { typography } from "erxes-ui-utils";
 
 const fontWeightLight = typography.fontWeightLight;
 const fontWeightRegular = typography.fontWeightRegular;

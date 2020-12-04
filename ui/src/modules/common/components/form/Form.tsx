@@ -1,4 +1,4 @@
-import { Form as CommonForm } from 'erxes-common-ui'
+import { Form as CommonForm } from 'erxes-ui-utils'
 import { IFormProps } from 'modules/common/types';
 import React from 'react';
 import { __ } from '../../utils';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl as CommonFormControl } from 'erxes-common-ui'
+import { FormControl as CommonFormControl } from 'erxes-ui-utils'
 // import injectSheet from "react-jss";
 // import styled from "styled-components";
 

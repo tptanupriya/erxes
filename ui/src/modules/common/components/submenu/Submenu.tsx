@@ -1,4 +1,4 @@
-import { SubMenu } from 'erxes-common-ui';
+import { SubMenu } from 'erxes-ui-utils';
 import { ISubMenuItem } from 'modules/common/types';
 import { __ } from 'modules/common/utils';
 import React from 'react';

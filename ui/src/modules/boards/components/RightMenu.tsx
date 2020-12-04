@@ -1,5 +1,5 @@
 import Button from 'modules/common/components/Button';
-// import { Button } from 'erxes-common-ui'
+// import { Button } from 'erxes-ui-utils'
 import { FormControl } from 'modules/common/components/form';
 import Icon from 'modules/common/components/Icon';
 import { Tabs, TabTitle } from 'modules/common/components/tabs';

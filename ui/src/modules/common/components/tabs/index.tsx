@@ -1,4 +1,4 @@
-import { Tabs as MainTabs } from 'erxes-common-ui'
+import { Tabs as MainTabs } from 'erxes-ui-utils'
 import React from 'react';
 
 function Tabs(props: {

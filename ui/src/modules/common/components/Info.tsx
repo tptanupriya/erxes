@@ -1,4 +1,4 @@
-import { Info as CommonInfo } from 'erxes-common-ui';
+import { Info as CommonInfo } from 'erxes-ui-utils';
 import React from 'react';
 
 type Props = {

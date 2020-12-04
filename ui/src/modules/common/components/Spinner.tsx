@@ -1,4 +1,4 @@
-import { Spinner as CommonSpinner } from 'erxes-common-ui';
+import { Spinner as CommonSpinner } from 'erxes-ui-utils';
 import { rotate } from 'modules/common/utils/animations';
 import React from 'react';
 import styled from 'styled-components';

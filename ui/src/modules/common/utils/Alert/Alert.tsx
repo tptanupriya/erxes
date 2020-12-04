@@ -1,3 +1,3 @@
-import { AlertItem } from 'erxes-common-ui';
+import { AlertItem } from 'erxes-ui-utils';
 
 export { AlertItem }

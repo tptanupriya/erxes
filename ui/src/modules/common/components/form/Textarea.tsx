@@ -1,4 +1,4 @@
-import { Textarea as CommonTextArea } from 'erxes-common-ui'
+import { Textarea as CommonTextArea } from 'erxes-ui-utils'
 import React from 'react';
 
 type Props = {
