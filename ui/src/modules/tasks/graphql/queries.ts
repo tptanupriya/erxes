@@ -1,3 +1,4 @@
+import { tasksQueries } from 'erxes-ui';
 import { commonFields } from 'modules/boards/graphql/mutations';
 import {
   conformityQueryFieldDefs,
@@ -52,18 +53,7 @@ const tasks = `
   }
 `;
 
-const taskDetail = `
-  query taskDetail($_id: String!) {
-    taskDetail(_id: $_id) {
-      ${commonFields}
-      timeTrack {
-        status
-        timeSpent
-        startDate
-      }
-    }
-  }
-`;
+const taskDetail = tasksQueries.taskDetail;
 
 const archivedTasks = `
   query archivedTasks(

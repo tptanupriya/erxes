@@ -1,31 +1,18 @@
-import { IItem } from 'modules/boards/types';
+import {
+    EditMutationResponse as EditMutationResponseC,
+    RemoveMutationResponse as RemoveMutationResponseC,
+    TaskDetailQueryResponse as TaskDetailQueryResponseC
+} from 'erxes-ui/lib/tasks/types';
+
 import { IActivityLogForMonth } from '../activityLogs/types';
 
-export type EditMutationVariables = {
-  _id: string;
-  name?: string;
-  assignedUserIds: string[];
-  closeDate: Date;
-  description: string;
-  reminderMinute: number;
-  isComplete: boolean;
-};
+export type EditMutationResponse = EditMutationResponseC;
 
-export type EditMutationResponse = ({
-  variables: EditMutationVariables
-}) => Promise<any>;
+export type RemoveMutationResponse = RemoveMutationResponseC;
 
-export type RemoveMutationResponse = {
-  removeMutation: (params: { variables: { _id: string } }) => Promise<void>;
-};
+export type TaskDetailQueryResponse = TaskDetailQueryResponseC;
 
 export type ActivityLogQueryResponse = {
   activityLogs: IActivityLogForMonth[];
   loading: boolean;
-};
-
-export type TaskDetailQueryResponse = {
-  taskDetail: IItem;
-  loading: boolean;
-  refetch: () => void;
 };

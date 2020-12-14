@@ -5,12 +5,11 @@ import {
   BoardsQueryResponse as BoardsQueryResponseC,
   PipelinesQueryResponse as PipelinesQueryResponseC,
   StagesQueryResponse as StagesQueryResponseC,
+  IItem as IItemC,
+  IPipelineLabel as IPipelineLabelC
 } from 'erxes-ui/lib/boards/types'
-import { IAttachment, QueryResponse } from 'modules/common/types';
+import { QueryResponse } from 'modules/common/types';
 import { ISavedConformity } from 'modules/conformity/types';
-import { IUser } from '../auth/types';
-import { ICompany } from '../companies/types';
-import { ICustomer } from '../customers/types';
 
 export interface IOptions {
   EditForm: any;
@@ -105,53 +104,15 @@ export interface IConversionStage extends IStage {
   compareNextStage: IStageComparisonInfo;
 }
 
-export interface IPipelineLabel {
-  _id?: string;
-  name: string;
-  colorCode: string;
-  pipelineId?: string;
-  createdBy?: string;
-  createdAt?: Date;
-}
+export interface IPipelineLabel extends IPipelineLabelC { }
 
 export interface IPipelineLabelVariables {
   name: string;
   colorCode: string;
   pipelineId: string;
 }
-export interface IItem {
-  _id: string;
-  name: string;
-  order: number;
-  stageId: string;
-  boardId?: string;
-  closeDate: Date;
-  description: string;
-  amount: number;
-  modifiedAt: Date;
-  assignedUserIds?: string[];
-  assignedUsers: IUser[];
-  createdUser?: IUser;
-  companies: ICompany[];
-  customers: ICustomer[];
-  attachments?: IAttachment[];
-  labels: IPipelineLabel[];
-  pipeline: IPipeline;
-  stage?: IStage;
-  isWatched?: boolean;
-  priority?: string;
-  hasNotified?: boolean;
-  isComplete: boolean;
-  reminderMinute: number;
-  labelIds: string[];
-  status?: string;
-  createdAt: Date;
-  timeTrack: {
-    status: string;
-    timeSpent: number;
-    startDate?: string;
-  };
-}
+
+export interface IItem extends IItemC { }
 
 export interface IDraggableLocation {
   droppableId: string;

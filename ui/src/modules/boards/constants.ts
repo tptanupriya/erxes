@@ -1,3 +1,5 @@
+import { BoardsConstants } from 'erxes-ui';
+
 export const STORAGE_BOARD_KEY = 'erxesCurrentBoardId';
 export const STORAGE_PIPELINE_KEY = 'erxesCurrentPipelineId';
 
@@ -30,16 +32,7 @@ export const TEXT_COLORS = [
   '#000'
 ];
 
-export const REMINDER_MINUTES = [
-  { _id: '0', name: 'At Time of Due Date' },
-  { _id: '5', name: '5 Minutes Before' },
-  { _id: '10', name: '10 Minutes Before' },
-  { _id: '15', name: '15 Minutes Before' },
-  { _id: '60', name: '1 Hour Before' },
-  { _id: '120', name: '2 Hour Before' },
-  { _id: '1440', name: '1 Day Before' },
-  { _id: '2880', name: '2 Day Before' }
-];
+export const REMINDER_MINUTES = BoardsConstants.REMINDER_MINUTES;
 
 export const PIPELINE_UPDATE_STATUSES = {
   START: 'start',

@@ -1,34 +1,8 @@
-export const commonMutationVariables = `
-  $proccessId: String,
-  $aboveItemId: String,
-  $stageId: String,
-  $closeDate: Date,
-  $description: String,
-  $assignedUserIds: [String],
-  $order: Int,
-  $attachments: [AttachmentInput],
-  $reminderMinute: Int,
-  $isComplete: Boolean,
-  $status: String,
-  $priority: String,
-  $sourceConversationId: String,
-`;
+import { boardMutations } from "erxes-ui";
 
-export const commonMutationParams = `
-  proccessId: $proccessId,
-  aboveItemId: $aboveItemId,
-  stageId: $stageId,
-  closeDate: $closeDate,
-  description: $description,
-  assignedUserIds: $assignedUserIds,
-  order: $order,
-  attachments: $attachments,
-  reminderMinute: $reminderMinute,
-  isComplete: $isComplete,
-  status: $status,
-  priority: $priority,
-  sourceConversationId: $sourceConversationId,
-`;
+export const commonMutationVariables = boardMutations.commonMutationVariables;
+
+export const commonMutationParams = boardMutations.commonMutationParams;
 
 export const commonDragVariables = `
   $itemId: String!,
@@ -46,70 +20,7 @@ export const commonDragParams = `
   proccessId: $proccessId
 `;
 
-export const commonFields = `
-  _id
-  name
-  stageId
-  hasNotified
-  pipeline {
-    _id
-    name
-  }
-  boardId
-  companies {
-    _id
-    primaryName
-    links
-  }
-  customers {
-    _id
-    firstName
-    lastName
-    primaryEmail
-    primaryPhone
-    visitorContactInfo
-  }
-  closeDate
-  description
-  priority
-  assignedUsers {
-    _id
-    email
-    details {
-      fullName
-      avatar
-    }
-  }
-  labels {
-    _id
-    name
-    colorCode
-  }
-  labelIds
-  stage {
-    probability
-  }
-  isWatched
-  attachments {
-    name
-    url
-    type
-    size
-  }
-  modifiedAt
-  modifiedBy
-  reminderMinute
-  isComplete
-  status
-  createdUser {
-    _id
-    details {
-      fullName
-      avatar
-    }
-  }
-  order
-`;
+export const commonFields = boardMutations.commonFields;
 
 const stagesUpdateOrder = `
   mutation stagesUpdateOrder($orders: [OrderItem]) {

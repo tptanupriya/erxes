@@ -1,3 +1,4 @@
+import { tasksMutations } from 'erxes-ui';
 import {
   commonDragParams,
   commonDragVariables,
@@ -17,21 +18,9 @@ const tasksAdd = `
   }
 `;
 
-const tasksEdit = `
-  mutation tasksEdit($_id: String!, $name: String, ${commonMutationVariables}) {
-    tasksEdit(_id: $_id, name: $name, ${commonMutationParams}) {
-      ${commonFields}
-    }
-  }
-`;
+const tasksEdit = tasksMutations.tasksEdit;
 
-const tasksRemove = `
-  mutation tasksRemove($_id: String!) {
-    tasksRemove(_id: $_id) {
-      _id
-    }
-  }
-`;
+const tasksRemove = tasksMutations.tasksRemove;
 
 const tasksChange = `
   mutation tasksChange(${commonDragVariables}) {
