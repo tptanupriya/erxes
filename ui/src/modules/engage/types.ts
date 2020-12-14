@@ -1,109 +1,33 @@
-import { IConditionsRule, QueryResponse } from 'modules/common/types';
+import {
+    EngageMessageDetailQueryResponse as EngageMessageDetailQueryResponseC,
+    IDeliveryReport as IDeliveryReportC, IEngageEmail as IEngageEmailC,
+    IEngageMessage as IEngageMessageC, IEngageMessageDoc as IEngageMessageDocC,
+    IEngageMessenger as IEngageMessengerC, IEngageScheduleDate as IEngageScheduleDateC,
+    IEngageSms as IEngageSmsC, IEngageSmsStats as IEngageSmsStatsC, IEngageStats as IEngageStatsC
+} from 'erxes-ui/lib/engage/types';
+import { QueryResponse } from 'modules/common/types';
 import { IEmailTemplate } from 'modules/settings/emailTemplates/types';
-import { IIntegration } from 'modules/settings/integrations/types';
+
 import { IUser } from '../auth/types';
-import { IAttachment } from '../common/types';
-import { ISegment, ISegmentCondition, ISegmentDoc } from '../segments/types';
-import { IBrand } from '../settings/brands/types';
-import { ITag } from '../tags/types';
+import { ISegmentCondition, ISegmentDoc } from '../segments/types';
 
-export type IEngageScheduleDate = {
-  type: string;
-  month: string;
-  day: string;
-  dateTime: string;
-} | null;
+export type IEngageScheduleDate = IEngageScheduleDateC
 
-export interface IEngageMessenger {
-  brandId: string;
-  kind?: string;
-  sentAs: string;
-  content: string;
-  rules?: IConditionsRule[];
-}
+export interface IEngageMessenger extends IEngageMessengerC { }
 
-export interface IEngageEmail {
-  templateId?: string;
-  subject: string;
-  sender?: string;
-  replyTo?: string;
-  content: string;
-  attachments?: IAttachment[];
-}
+export interface IEngageEmail extends IEngageEmailC { }
 
-export interface IEngageSms {
-  from?: string;
-  content: string;
-  fromIntegrationId: string;
-}
+export interface IEngageSms extends IEngageSmsC { }
 
-export interface IEngageStats {
-  send: number;
-  delivery: number;
-  open: number;
-  click: number;
-  complaint: number;
-  bounce: number;
-  renderingfailure: number;
-  reject: number;
-  total: number;
-}
+export interface IEngageStats extends IEngageStatsC { }
 
-export interface IEngageSmsStats {
-  total: number;
-  queued: number;
-  sending: number;
-  sent: number;
-  delivered: number;
-  sending_failed: number;
-  delivery_failed: number;
-  delivery_unconfirmed: number;
-}
+export interface IEngageSmsStats extends IEngageSmsStatsC { }
 
-export interface IDeliveryReport {
-  _id: string;
-  engageMessageId: string;
-  customerId: string;
-  status: string;
-  createdAt: string;
-}
+export interface IDeliveryReport extends IDeliveryReportC { }
 
-export interface IEngageMessageDoc {
-  kind?: string;
-  type?: string;
-  segmentIds?: string[];
-  tagIds?: string[];
-  brandIds?: string[];
-  customerIds?: string[];
-  title: string;
-  fromUserId?: string;
-  method: string;
-  isDraft?: boolean;
-  isLive?: boolean;
-  email?: IEngageEmail;
-  messenger?: IEngageMessenger;
-  scheduleDate?: IEngageScheduleDate;
-  shortMessage?: IEngageSms;
-}
+export interface IEngageMessageDoc extends IEngageMessageDocC { }
 
-export interface IEngageMessage extends IEngageMessageDoc {
-  _id: string;
-  stopDate: Date;
-  createdDate: Date;
-  messengerReceivedCustomerIds?: string[];
-  brand: IBrand;
-  segment: ISegment;
-  fromUser: IUser;
-  tagIds: string[];
-  getTags: ITag[];
-  totalCustomersCount?: number;
-  validCustomersCount?: number;
-
-  stats?: IEngageStats;
-  logs?: Array<{ message: string }>;
-  smsStats?: IEngageSmsStats;
-  fromIntegration?: IIntegration;
-}
+export interface IEngageMessage extends IEngageMessageC { }
 
 // mutation types
 
@@ -151,11 +75,7 @@ export type WithFormEditMutationResponse = {
 };
 
 // query types
-export type EngageMessageDetailQueryResponse = {
-  engageMessageDetail: IEngageMessage;
-  error: Error;
-  loading: boolean;
-};
+export type EngageMessageDetailQueryResponse = EngageMessageDetailQueryResponseC;
 
 export type EngageVerifiedEmailsQueryResponse = {
   engageVerifiedEmails: string[];

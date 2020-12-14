@@ -1,3 +1,5 @@
+import { engageGraphqls } from 'erxes-ui';
+
 const listParamsDef = `
   $kind: String
   $status: String
@@ -22,45 +24,7 @@ const listParamsValue = `
   perPage: $perPage
 `;
 
-const commonFields = `
-  _id
-  title
-  kind
-  isDraft
-  isLive
-  createdAt
-  method
-  tagIds
-  brandIds
-  segmentIds
-  stats
-  messenger
-  email
-  smsStats
-
-  totalCustomersCount
-  validCustomersCount
-
-  fromUser {
-    _id
-    email
-    details {
-      avatar
-      fullName
-      position
-    }
-  }
-  shortMessage {
-    from
-    content
-    fromIntegrationId
-  }
-
-  scheduleDate {
-    type
-    dateTime
-  }
-`;
+const commonFields = engageGraphqls.commonFields;
 
 const engageMessages = `
   query engageMessages(${listParamsDef}) {
@@ -83,23 +47,7 @@ const engageMessages = `
   }
 `;
 
-export const engageDetailFields = `
-  ${commonFields}
-
-  customerIds
-  fromUserId
-  stopDate
-
-  scheduleDate {
-    type
-    month
-    day
-    dateTime
-  }
-  brand {
-    name
-  }
-`;
+export const engageDetailFields = engageGraphqls.engageDetailFields;
 
 const engageMessageStats = `
   query engageMessageDetail($_id: String) {
@@ -115,13 +63,7 @@ const engageMessageStats = `
   }
 `;
 
-const engageMessageDetail = `
-  query engageMessageDetail($_id: String) {
-    engageMessageDetail(_id: $_id){
-      ${engageDetailFields}
-    }
-  }
-`;
+const engageMessageDetail = engageGraphqls.engageMessageDetail;
 
 const users = `
   query users {

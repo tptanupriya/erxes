@@ -1,3 +1,7 @@
+import {
+  IConditionFilter as IConditionFilterC, ISegment as ISegmentC,
+  ISegmentCondition as ISegmentConditionC, ISegmentDoc as ISegmentDocC
+} from 'erxes-ui/lib/segments/types';
 import { QueryResponse } from 'modules/common/types';
 
 export interface IEvent {
@@ -5,25 +9,8 @@ export interface IEvent {
   attributeNames: string[];
 }
 
-export interface IConditionFilter {
-  key?: string;
-  name: string;
-  operator: string;
-  value: string;
-}
-export interface ISegmentCondition {
-  key?: string;
-  type: string;
-
-  propertyName?: string;
-  propertyOperator?: string;
-  propertyValue?: string;
-
-  eventName?: string;
-  eventOccurence?: string;
-  eventOccurenceValue?: number;
-  eventAttributeFilters?: IConditionFilter[];
-}
+export interface IConditionFilter extends IConditionFilterC { }
+export interface ISegmentCondition extends ISegmentConditionC { }
 export interface ISegmentWithConditionDoc {
   name: string;
   description: string;
@@ -32,21 +19,9 @@ export interface ISegmentWithConditionDoc {
   conditions: ISegmentCondition[];
 }
 
-export interface ISegmentDoc {
-  name: string;
-  contentType?: string;
-  description: string;
-  color: string;
-  conditions: ISegmentCondition[];
-  subOf: string;
-}
+export interface ISegmentDoc extends ISegmentDocC { }
 
-export interface ISegment extends ISegmentDoc {
-  _id: string;
-  contentType: string;
-  getSubSegments: ISegment[];
-  getParentSegment: ISegment;
-}
+export interface ISegment extends ISegmentC { }
 
 // query types
 export type Counts = {
