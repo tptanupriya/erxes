@@ -1,3 +1,4 @@
+import { inboxQueries } from 'erxes-ui';
 const users = `
   query users {
     users {
@@ -37,7 +38,7 @@ const integrationDetail = `
   query integrationDetail($_id: String!) {
     integrationDetail(_id: $_id) {
       ${commonFields}
-      
+
       messengerData
       uiOptions
       websiteMessengerApps {
@@ -62,52 +63,7 @@ const integrationTotalCount = `
   }
 `;
 
-const commonParamsDef = `
-  $channelId: String,
-  $brandId: String,
-  $kind: String,
-  $perPage: Int,
-  $page: Int,
-  $searchValue: String
-`;
-
-const commonParams = `
-  channelId: $channelId,
-  brandId: $brandId,
-  kind: $kind,
-  perPage: $perPage,
-  page: $page,
-  searchValue: $searchValue
-`;
-
-const integrations = `
-  query integrations(${commonParamsDef}) {
-    integrations(${commonParams}) {
-      ${commonFields}
-
-      kind
-      brand {
-        _id
-        name
-        code
-      }
-      webhookData
-      leadData
-      formId
-      tagIds
-      tags {
-        _id
-        colorCode
-        name
-      }
-      form {
-        _id
-        title
-        code
-      }
-    }
-  }
-`;
+const integrations = inboxQueries.integrations;
 
 const engagesConfigDetail = `
   query engagesConfigDetail {

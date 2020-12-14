@@ -4,7 +4,7 @@ import { ICustomer } from 'modules/customers/types';
 import { IFacebookComment, IFacebookPost, IMessage } from 'modules/inbox/types';
 
 import FacebookComment from 'modules/inbox/containers/conversationDetail/facebook/FacebookComment';
-import { SimpleMessage } from '../conversation/messages';
+import SimpleMessage from '../conversation/messages/SimpleMessage';
 import FacebookPost from './FacebookPost';
 import { ShowMore } from './styles';
 

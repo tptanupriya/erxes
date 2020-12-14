@@ -1,18 +1,8 @@
-const emailTemplates = `
-  query emailTemplates($page: Int, $perPage: Int) {
-    emailTemplates(page: $page, perPage: $perPage) {
-      _id
-      name
-      content
-    }
-  }
-`;
+import { inboxQueries } from 'erxes-ui';
 
-const totalCount = `
-  query totalEmailTemplatesCount {
-    emailTemplatesTotalCount
-  }
-`;
+const emailTemplates = inboxQueries.emailTemplates;
+
+const totalCount = inboxQueries.totalCount;
 
 export default {
   emailTemplates,

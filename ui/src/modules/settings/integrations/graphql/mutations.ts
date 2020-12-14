@@ -1,3 +1,4 @@
+import { inboxMutations } from 'erxes-ui';
 const commonParamsDef = `
   $name: String!,
   $brandId: String!,
@@ -12,53 +13,7 @@ const commonParams = `
   channelIds: $channelIds
 `;
 
-const mailParamsDef = `
-  $erxesApiId: String!,
-  $replyTo: [String],
-  $inReplyTo: String,
-  $headerId: String,
-  $threadId: String,
-  $messageId: String,
-  $references: [String]
-  $replyToMessageId: String,
-  $subject: String!,
-  $kind: String,
-  $body: String!,
-  $to: [String]!,
-  $cc: [String],
-  $bcc: [String] ,
-  $from: String!,
-  $shouldResolve: Boolean,
-  $attachments: [JSON],
-  $customerId: String
-`;
-
-const mailParams = `
-  erxesApiId: $erxesApiId,
-  replyTo: $replyTo,
-  inReplyTo: $inReplyTo,
-  headerId: $headerId,
-  threadId: $threadId,
-  messageId: $messageId,
-  kind: $kind,
-  references: $references,
-  replyToMessageId: $replyToMessageId,
-  subject: $subject,
-  body: $body,
-  to: $to,
-  cc: $cc,
-  bcc: $bcc,
-  from: $from,
-  shouldResolve: $shouldResolve,
-  attachments: $attachments,
-  customerId: $customerId
-`;
-
-const integrationSendMail = ` 
-  mutation integrationSendMail(${mailParamsDef}) {
-    integrationSendMail(${mailParams})
-  }
-`;
+const integrationSendMail = inboxMutations.integrationSendMail;
 
 const integrationsCreateMessenger = `
   mutation integrationsCreateMessengerIntegration(${commonParamsDef}) {

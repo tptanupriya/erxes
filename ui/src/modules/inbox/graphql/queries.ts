@@ -1,6 +1,6 @@
+import { inboxQueries } from 'erxes-ui'
 import { queries as customerQueries } from 'modules/customers/graphql';
 import conversationFields from './conversationFields';
-import messageFields from './messageFields';
 
 export const paramsDef = `
   $channelId: String
@@ -99,13 +99,7 @@ const sidebarConversations = `
   }
 `;
 
-const conversationDetail = `
-  query conversationDetail($_id: String!) {
-    conversationDetail(_id: $_id) {
-      ${conversationFields}
-    }
-  }
-`;
+const conversationDetail = inboxQueries.conversationDetail;
 
 const conversationDetailMarkAsRead = `
   query conversationDetail($_id: String!) {
@@ -116,40 +110,9 @@ const conversationDetailMarkAsRead = `
   }
 `;
 
-const conversationMessages = `
-  query conversationMessages($conversationId: String!, $skip: Int, $limit: Int, $getFirst: Boolean) {
-    conversationMessages(conversationId: $conversationId, skip: $skip, limit: $limit, getFirst: $getFirst) {
-      ${messageFields}
-    }
-  }
-`;
+const conversationMessages = inboxQueries.conversationMessages;
 
-const converstationFacebookComments = `
-  query converstationFacebookComments($postId: String!,$isResolved: Boolean, $commentId: String, $senderId: String, $skip: Int, $limit: Int) {
-    converstationFacebookComments(postId: $postId,isResolved:$isResolved, limit: $limit, commentId: $commentId, senderId: $senderId, skip: $skip) {
-      conversationId
-      commentId
-      postId
-      recipientId
-      senderId
-      attachments
-      content
-      erxesApiId
-      timestamp
-      parentId
-      commentCount
-      isResolved
-      permalink_url
-      customer {
-        _id
-        visitorContactInfo
-        avatar
-        firstName
-        lastName
-      }
-    }
-  }
-`;
+const converstationFacebookComments = inboxQueries.converstationFacebookComments;
 
 const converstationFacebookCommentsCount = `
   query converstationFacebookCommentsCount($postId: String!, $isResolved: Boolean) {
