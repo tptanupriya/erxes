@@ -1,30 +1,28 @@
 import {
-  MainStyleButtonRelated as ButtonRelated,
-  MainStyleCenterContent as CenterContent,
-  MainStyleCloseModal as CloseModal,
-  MainStyleCount as Count,
-  MainStyleDateContainer as DateContainer,
-  MainStyleDateWrapper as DateWrapper,
-  MainStyleFormColumn as FormColumn,
-  MainStyleFormWrapper as FormWrapper,
-  MainStyleHomeContainer as HomeContainer,
-  MainStyleInfoWrapper as InfoWrapper,
-  MainStyleLimited as Limited,
-  MainStyleLinks as Links,
+  MainStyleBoxRoot as BoxRoot,
+  MainStyleFullContent as FullContent,
   MainStyleModalFooter as ModalFooter,
+  MainStyleInfoWrapper as InfoWrapper,
+  MainStyleLinks as Links,
+  MainStyleFormWrapper as FormWrapper,
+  MainStyleFormColumn as FormColumn,
+  MainStyleCenterContent as CenterContent,
+  MainStyleActivityContent as ActivityContent,
+  MainStyleDropIcon as DropIcon,
+  MainStyleMiddleContent as MiddleContent,
+  MainStyleHomeContainer as HomeContainer,
+  MainStyleDateWrapper as DateWrapper,
+  MainStyleCloseModal as CloseModal,
+  MainStyleScrollWrapper as ScrollWrapper,
+  MainStyleDateContainer as DateContainer,
   MainStyleTabContent as TabContent,
-  MainStyleTopHeader as TopHeader
+  MainStyleButtonRelated as ButtonRelated,
+  MainStyleSimpleButton as SimpleButton,
+  MainStyleTopHeader as TopHeader,
+  MainStyleTitle as Title,
+  MainStyleCount as Count,
+  MainStyleLimited as Limited
 } from 'erxes-ui';
-import {
-  ActivityContent,
-  BoxRoot,
-  DropIcon,
-  FullContent,
-  MiddleContent,
-  ScrollWrapper,
-  SimpleButton,
-  Title
-} from 'erxes-ui/lib/styles/main';
 
 export {
   BoxRoot,

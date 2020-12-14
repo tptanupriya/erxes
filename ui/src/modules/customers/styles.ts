@@ -1,4 +1,4 @@
-import { Actions } from 'erxes-ui/lib/styles/main';
+import { MainStyleActions as Actions } from 'erxes-ui';
 import { colors, dimensions, typography } from 'modules/common/styles';
 import { SidebarList } from 'modules/layout/styles';
 import styled, { css } from 'styled-components';
