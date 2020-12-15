@@ -4659,10 +4659,10 @@ erxes-icon@^1.2.1:
   resolved "https://registry.yarnpkg.com/erxes-icon/-/erxes-icon-1.2.1.tgz#1df585ff385146dfffd0261398de474eed39c2c6"
   integrity sha512-qk1yavXsBCub9/XBaiTgg9OCouRfZnDxWIqtfi/tVr51zFYgZuGm5GkswglIhF5FCayJ+XtOFqf/Z/9UUc676g==
 
-erxes-ui@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/erxes-ui/-/erxes-ui-0.0.6.tgz#61bb69dd6c3e367b8152b58a4786cbdc702993d5"
-  integrity sha512-aM5Nm6L4b1m+5MmbdLgvjXdV5KNPpi/YwLuKXS0ZjX3smjykSWbo51TOefy4AjEikShsRMGcVwen8vzqkdZrmQ==
+erxes-ui@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/erxes-ui/-/erxes-ui-0.0.7.tgz#4d51f4fc4501aa1dd1f9f0c26778adf312fc0361"
+  integrity sha512-tumX9X1rh97Nr0TvkN5EjyyS2PUV5z7cNvia+vWdKlQLTn0ICjqOSmz2dt2e0v1GIIo1TZuluC+xayzmxGQ9mA==
   dependencies:
     "@nateradebaugh/react-datetime" "^4.0.0-rc.10"
     "@types/bunyan" "^1.8.6"
